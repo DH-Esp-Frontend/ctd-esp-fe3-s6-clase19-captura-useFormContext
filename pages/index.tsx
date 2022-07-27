@@ -19,9 +19,9 @@ const Home: NextPage = () => {
         Crea tu usuario para que comiences tu membresía.
       </h1>
         <form onSubmit={handleSubmit}>
-          <InputField placeholder='Email' autocomplete={['@gmail.com', '@hotmail.com']} />
-          <InputField placeholder='Nombre'/>
-          <InputField placeholder='Apellido'/>
+          <InputField name='Email' autocomplete={['@gmail.com', '@hotmail.com']} />
+          <InputField name='Nombre'/>
+          <InputField name='Apellido'/>
           <SelectField name='plan' options={["Basico", "Estandar", "Premium"]}/>
           <button>Siguiente</button>
         </form>
