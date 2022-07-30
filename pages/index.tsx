@@ -1,16 +1,17 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { FormProvider, useForm } from 'react-hook-form'
-import InputField from '../components/InputField'
-import SelectField from '../components/SelectField'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import { FormProvider, useForm } from "react-hook-form";
+import InputField from "../components/InputField";
+import SelectField from "../components/SelectField";
+import UserProfiles from "../components/UserProfiles";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const methods = useForm()
-  const onSubmit = methods.handleSubmit(data => {
-    alert("Tu cuenta se ha registrado exitosamente!")
+  const methods = useForm();
+  const onSubmit = methods.handleSubmit((data) => {
+    alert("Tu cuenta se ha registrado exitosamente!");
     console.log(data);
-  })
+  });
 
   return (
     <div className={styles.container}>
@@ -19,20 +20,26 @@ const Home: NextPage = () => {
         <link rel="icon" href="img/favicon.ico" />
       </Head>
 
-      <h1>
-        Crea tu usuario para que comiences tu membresía.
-      </h1>
-       <FormProvider {...methods}>
+      <h1>Crea tu usuario para que comiences tu membresía.</h1>
+      <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
-          <InputField name='Email' autocomplete={['@gmail.com', '@hotmail.com']} />
-          <InputField name='Nombre'/>
-          <InputField name='Apellido'/>
-          <SelectField name='plan' options={["Basico", "Estandar", "Premium"]}/>
+          <InputField
+            name="Email"
+            autocomplete={["@gmail.com", "@hotmail.com"]}
+          />
+          <InputField name="Nombre" />
+          <InputField name="Apellido" />
+          <SelectField
+            name="plan"
+            options={["Basico", "Estandar", "Premium"]}
+          />
+          {/* Agregamos el componente al formulario */}
+          <UserProfiles />
           <button>Siguiente</button>
         </form>
-       </FormProvider>
+      </FormProvider>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
